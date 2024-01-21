@@ -2,7 +2,7 @@ package imageViewer;
 
 public interface Image {
 
-    String id();
+    String path();
 
     Image next();
 
