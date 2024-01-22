@@ -19,6 +19,7 @@ public class SwingImageDisplay extends JPanel implements ImageDisplay {
     public void show(Image image) {
         this.im = image;
         this.bufferedImage=getBuff(im.path());
+        repaint();
     }
 
     private BufferedImage getBuff(String path) {
@@ -36,10 +37,11 @@ public class SwingImageDisplay extends JPanel implements ImageDisplay {
     }
     @Override
     public void paint(Graphics g){
+        g.fillRect(0,0, this.getWidth(), this.getHeight());
         BufferedImage newImage = null;
 
-        double gWidth = (double)(this.getWidth()/bufferedImage.getWidth());
-        double gHeight = (double)(this.getHeight()/bufferedImage.getHeight());
+        double gWidth = this.getWidth()/ (double)bufferedImage.getWidth();
+        double gHeight = this.getHeight()/(double)bufferedImage.getHeight();
         double s;
 
         if (gWidth <= gHeight){
